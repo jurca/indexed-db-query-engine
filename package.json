@@ -1,0 +1,45 @@
+{
+  "name": "@jurca/indexed-db-query-engine",
+  "version": "0.0.0",
+  "description": "Query engine for the IndexedDB web browser database with automatic query execution optimization.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "eslint --ext .ts . && jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jurca/indexed-db-query-engine.git"
+  },
+  "keywords": [
+    "indexeddb",
+    "indexed",
+    "db",
+    "query",
+    "engine",
+    "idb"
+  ],
+  "author": "Martin Jurča <mjurca@centrum.cz>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jurca/indexed-db-query-engine/issues"
+  },
+  "homepage": "https://github.com/jurca/indexed-db-query-engine#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-typescript": "^7.16.0",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.10",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "babel-jest": "^27.4.0",
+    "eslint": "^8.3.0",
+    "fake-indexeddb": "^3.1.7",
+    "jest": "^27.4.0",
+    "typescript": "^4.5.2"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  }
+}
