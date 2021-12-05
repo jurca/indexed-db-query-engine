@@ -1,7 +1,7 @@
 {
   "name": "@jurca/indexed-db-query-engine",
   "version": "0.0.0",
-  "description": "Query engine for the IndexedDB web browser database with automatic query execution optimization.",
+  "description": "Query engine (without aggregations support) for the IndexedDB web browser database with automatic query execution optimization.",
   "main": "index.js",
   "type": "module",
   "scripts": {
