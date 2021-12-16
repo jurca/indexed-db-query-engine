@@ -1,5 +1,6 @@
 import QueryFilterAlternatives from './QueryFilterAlternatives.js'
 import QueryOrderBy from './QueryOrderBy.js'
+import QueryParameter from './QueryParameter.js'
 import QueryUniqueValueConstraint from './QueryUniqueValueConstraint.js'
 import RecordDeduplicationMode from './RecordDeduplicationMode.js'
 import RecordPropertyProcessor from './RecordPropertyProcessor.js'
@@ -45,20 +46,20 @@ export default interface Query<S, I = S, R = I> {
    * result. This must be a safe nonnegative integer (an integer greater or equal to 0 and lower or equal to
    * `Number.MAX_SAFE_INTEGER`).
    */
-  readonly skipFirst: number
+  readonly skipFirst: number | QueryParameter
 
   /**
    * The maximum number or records the query may return. This must be a safe positive integer (an integer greater or
    * equal to 1 and lower or equal to `Number.MAX_SAFE_INTEGER`).
    */
-  readonly recordLimit: number
+  readonly recordLimit: number | QueryParameter
 
   /**
    * The maximum number of records the query engine may examine while executing the query before terminating query
    * execution prematurely. This must be a safe positive integer (an integer greater or equal to 1 and lower or equal
    * to `Number.MAX_SAFE_INTEGER`), or `Infinity` if no limit is to be applied.
    */
-  readonly examinedRecordsLimit: number
+  readonly examinedRecordsLimit: number | QueryParameter
 
   /**
    * Record modification functions to apply as the records are scanned in the underlying storage, before filters or
