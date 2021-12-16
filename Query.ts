@@ -50,7 +50,7 @@ export default interface Query<S, I = S, R = I> {
 
   /**
    * The maximum number or records the query may return. This must be a safe positive integer (an integer greater or
-   * equal to 1 and lower or equal to `Number.MAX_SAFE_INTEGER`).
+   * equal to 1 and lower or equal to `Number.MAX_SAFE_INTEGER`), or `Infinity` if no limit is to be applied.
    */
   readonly recordLimit: number | QueryParameter
 
