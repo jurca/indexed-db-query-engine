@@ -8,7 +8,7 @@ import QueryParameter from './QueryParameter.js'
 export default interface QueryRecordPropertyFilter<R> {
   /**
    * Property path denoting a property of the records by which's values the records are to be filtered. The referenced
-   * property's value must be a valid key value.
+   * property's value must be a valid key value, otherwise the record will not be included in the query's results.
    * 
    * @see {@linkcode IDBKeyRange}
    * @see {@linkcode IDBValidKey}

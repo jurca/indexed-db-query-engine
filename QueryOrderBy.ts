@@ -7,7 +7,7 @@ import PropertyPath from './PropertyPath.js'
 export default interface QueryOrderBy<R> {
   /**
    * Property path denoting a property of the records which's value will be used to order the records. The referenced
-   * property's value must be a valid key value.
+   * property's value must be a valid key value, otherwise the record will not be included in the query's results.
    * 
    * @see {@linkcode IDBKeyRange}
    * @see {@linkcode IDBValidKey}
