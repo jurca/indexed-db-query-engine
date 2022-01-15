@@ -21,7 +21,8 @@ export default interface AnalyzedQuery<S, I = S, R = I> {
 
   /**
    * A record matching pattern that has been derived from one of the query's filter alternatives after deduplication
-   * and merging of overlaps, with the largest common denominator pattern (the main filter) removed from this pattern.
+   * and merging of overlaps, with the largest common denominator pattern (the {@linkcode mainFilter}) removed from
+   * this pattern.
    */
   readonly additionalFilterAlternatives: readonly AnalyzedFilter<S, I>[]
 
@@ -34,7 +35,8 @@ export default interface AnalyzedQuery<S, I = S, R = I> {
 
   /**
    * Desired ordering of the records in query results. The record ordering requirements are applied lexicographically,
-   * with the `indexable` requirements being applied before the `preProcessorDependant` ones.
+   * with the {@linkcode AnalyzedOrderBy.indexable} requirements being applied before the
+   * {@linkcode AnalyzedOrderBy.preProcessorDependant} ones.
    *
    * The query engine may return the matched records in any order if no ordering requirements are provided.
    */
