@@ -2,11 +2,15 @@ import Query from '../Query.js'
 import RecordPropertyProcessor from '../RecordPropertyProcessor.js'
 import AnalyzedFilter from './AnalyzedFilter.js'
 import AnalyzedOrderBy from './AnalyzedOrderBy.js'
+import AnalyzedRecordPropertyProcessor from './AnalyzedRecordPropertyProcessor.js'
 import AnalyzedUniqueValueConstraint from './AnalyzedUniqueValueConstraint.js'
 
 /**
  * Result of a basic analysis and optimization of a query. This is analysis is not bound to any object store, enabling
  * reuse with multiple object stores if required.
+ *
+ * Note that any query properties that are not affected by the analysis are left out on purpose, and are still
+ * accessible through the {@linkcode query} property.
  */
 export default interface AnalyzedQuery<S, I = S, R = I> {
   /**
@@ -48,23 +52,27 @@ export default interface AnalyzedQuery<S, I = S, R = I> {
    * values.
    *
    * These property pre-processors exclude any pre-processor that has been deemed by the query engine to have no effect
-   * on the outcome of sorting or filtering the records - these have been moved to the start of the record property
-   * post-processors.
+   * on the outcome of sorting or filtering the records - these have been moved to the
+   * {@linkcode postponedRecordPreProcessor}.
    *
    * The property processors will be applied in order chosen by the query engine, but property processors affecting
-   * each other's inputs are guaranteed to be executed in the order they were specified in.
+   * each other's inputs are guaranteed to be executed in the order they were specified in. The order of property
+   * processors in this list reflects that, with every dependency of every pre-processor in the list being located at a
+   * lower index that the pre-processor at hand.
    */
-  readonly recordPreProcessor: readonly RecordPropertyProcessor<S, I>[]
+  readonly recordPreProcessor: readonly AnalyzedRecordPropertyProcessor<S, I>[]
 
   /**
-   * Record modification functions to apply after the records have been filtered and sorted, but before they are
-   * returned from the query.
-   * 
-   * These property post-processors include all property post-processors of the query, as well as any property
-   * pre-processor the query engine deemed to have no effect on record sorting or filtering.
-   * 
+   * Record modification functions to apply after the records have been filtered and sorted, but before the record
+   * modification functions in the {@linkcode query.recordPostProcessor} property are applied.
+   *
+   * These property processors include all property pre-processors the query engine deemed to have no effect on record
+   * sorting or filtering.
+   *
    * The property processors will be applied in order chosen by the query engine, but property processors affecting
-   * each other's inputs are guaranteed to be executed in the order they were specified in.
+   * each other's inputs are guaranteed to be executed in the order they were specified in. The order of property
+   * processors in this list reflects that, with every dependency of every pre-processor in the list being located at a
+   * lower index that the pre-processor at hand.
    */
-  readonly recordPostProcessor: readonly RecordPropertyProcessor<I, R>[]
+  readonly postponedRecordPreProcessor: readonly RecordPropertyProcessor<I, R>[]
 }
