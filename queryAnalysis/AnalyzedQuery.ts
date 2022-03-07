@@ -64,7 +64,7 @@ export default interface AnalyzedQuery<S, I = S, R = I> {
 
   /**
    * Record modification functions to apply after the records have been filtered and sorted, but before the record
-   * modification functions in the {@linkcode query.recordPostProcessor} property are applied.
+   * modification functions in the {@linkcode Query.recordPostProcessor} property are applied.
    *
    * These property processors include all property pre-processors the query engine deemed to have no effect on record
    * sorting or filtering.
