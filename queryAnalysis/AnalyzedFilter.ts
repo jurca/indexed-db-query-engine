@@ -1,4 +1,5 @@
 import QueryRecordFilter from '../QueryRecordFilter.js'
+import PreProcessorDependantQueryRecordPropertyFilter from './PreProcessorDependantQueryRecordPropertyFilter.js'
 
 /**
  * A record matching pattern that has been analyzed and had its property constraints split into two groups depending on
@@ -14,5 +15,5 @@ export default interface AnalyzedFilter<S, I> {
   /**
    * The part of the record matching pattern that is dependant on the effects of record pre-processors.
    */
-  readonly preProcessorDependant: QueryRecordFilter<I>
+  readonly preProcessorDependant: readonly PreProcessorDependantQueryRecordPropertyFilter<S, I>[]
 }

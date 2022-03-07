@@ -1,4 +1,5 @@
 import QueryOrderBy from '../QueryOrderBy.js'
+import PreProcessorDependantQueryOrderBy from './PreProcessorDependantQueryOrderBy.js'
 
 /**
  * Record ordering specification that has been analyzed to identify sorting clauses that can be applied by utilizing
@@ -17,5 +18,5 @@ export default interface AnalyzedOrderBy<S, I> {
    * by these ordering specifications lexicographically, this array contains every item since the first that would be
    * affected by a record pre-processor.
    */
-  readonly preProcessorDependant: readonly QueryOrderBy<I>[]
+  readonly preProcessorDependant: readonly PreProcessorDependantQueryOrderBy<S, I>[]
 }
