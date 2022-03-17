@@ -19,10 +19,10 @@ export default interface AnalyzedRecordPropertyProcessor<I, O> {
 
   /**
    * The total (rough and scalar) cost of applying this record property processor. The cost is calculated as
-   * `1 + dependsOn.cost`. This property serves as a heuristic meant to enable the query engine to prioritize execution
-   * of filters that are cheaper to apply, which should, statistically, reduce the total amount of computation
-   * necessary to execute the query (the query engine can discard a record on first unmatched filter without having to
-   * test the rest of filtering constraints).
+   * `processor.input.length + 1 + processor.output.length + dependsOn.cost`. This property serves as a heuristic meant
+   * to enable the query engine to prioritize execution of filters that are cheaper to apply, which should,
+   * statistically, reduce the total amount of computation necessary to execute the query (the query engine can discard
+   * a record on first unmatched filter without having to test the rest of filtering constraints).
    */
   readonly cost: number
 }
