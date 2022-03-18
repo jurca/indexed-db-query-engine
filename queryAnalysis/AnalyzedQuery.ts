@@ -1,5 +1,6 @@
 import Query from '../Query.js'
 import RecordPropertyProcessor from '../RecordPropertyProcessor.js'
+import RecordOp from '../recordUOp/RecordOp.js'
 import AnalyzedFilter from './AnalyzedFilter.js'
 import AnalyzedOrderBy from './AnalyzedOrderBy.js'
 import AnalyzedRecordPropertyProcessor from './AnalyzedRecordPropertyProcessor.js'
@@ -75,4 +76,58 @@ export default interface AnalyzedQuery<S, I = S, R = I> {
    * lower index that the pre-processor at hand.
    */
   readonly postponedRecordPreProcessor: readonly RecordPropertyProcessor<I, R>[]
+
+  /**
+   * Record processing micro-program that applies the pre-processor dependant parts of the {@linkcode mainFilter} and
+   * {@linkcode onlyUnique} record constraints as well the pre-processors required by them.
+   *
+   * The order of the operations is optimized for applying the cheapest operations (pre-processors and filters) first
+   * so that the more expensive operations are more likely to be executed less often, in order to improve the overall
+   * performance of query execution.
+   *
+   * The query engine may chain this program with other programs together before executing it.
+   */
+  readonly mainFilteringOps: readonly RecordOp[]
+
+  /**
+   * Record processing micro-program that applies the pre-processor dependant part of the
+   * {@linkcode additionalFilterAlternatives} record constraints as well as the pre-processors required by them, except
+   * for the pre-processors that were already applied by the {@linkcode mainFilteringOps} micro-program. This
+   * micro-program is always executed after the {@linkcode mainFilteringOps} micro-program, since the
+   * {@linkcode mainFilter} filtering constraints must be satisfied by all records returned from the query and can be
+   * assumed to be computationally cheaper to apply than evaluating multiple filtering alternatives and finding the
+   * first that matches the record at hand.
+   *
+   * The order of operations is optimized for applying the cheapest operations (pre-processors and filters) first so
+   * that the more expensive operations are more likely to be executed less often, in order to improve the overall
+   * performance of query execution.
+   *
+   * The query engine may chain this program with other programs together before executing it.
+   */
+  readonly additionalFilteringOps: readonly RecordOp[]
+
+  /**
+   * Record processing micro-program that applies the remaining record pre-processors in the
+   * {@linkcode recordPreProcessor} list, that weren't applied by the {@linkcode mainFilteringOps} and
+   * {@linkcode additionalFilteringOps} micro-programs, so that the records can be sorted. This micro-program is always
+   * executed after the aforementioned onces, since it's cheaper (in computation terms) to filter the records first and
+   * sort them second (the number of records that will need to be filtered is the same regardless of the order in which
+   * the programs are applied, however, by filtering the records first, the query engine is likely to end up with a
+   * smaller set of records to sort if any records were filtered out). That is why this micro-program does not apply
+   * any record pre-processors required for sorting that are already required for filtering the records.
+   *
+   * The query engine may chain this program with other programs together before executing it.
+   */
+  readonly preSortingOps: readonly RecordOp[]
+
+  /**
+   * Record processing micro-program that applies the record property processors in the
+   * {@linkcode postponedRecordPreProcessor} and {@linkcode Query.recordPostProcessor} lists.
+   *
+   * The query engine may choose to execute this program before or after sorting the records as this makes no
+   * difference from performance perspective.
+   *
+   * The query engine may chain this program with other programs together before executing it.
+   */
+  readonly postProcessingOps: readonly RecordOp[]
 }
