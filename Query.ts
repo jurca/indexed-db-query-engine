@@ -7,7 +7,7 @@ import RecordPropertyProcessor from './RecordPropertyProcessor.js'
 
 /**
  * A description of a query to execute on a {@linkcode IDBObjectStore}.
- * 
+ *
  * @template S The type of records stored in the {@linkcode IDBObjectStore} on which the query will be executed.
  * @template I The type of records stored in the {@linkcode IDBObjectStore} on which the query will be executed, with
  *           all pre-processors applied.

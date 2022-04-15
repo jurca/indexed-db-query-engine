@@ -12,6 +12,12 @@ import AnalyzedUniqueValueConstraint from './AnalyzedUniqueValueConstraint.js'
  *
  * Note that any query properties that are not affected by the analysis are left out on purpose, and are still
  * accessible through the {@linkcode query} property.
+ *
+ * @template S The type of records stored in the {@linkcode IDBObjectStore} on which the query will be executed.
+ * @template I The type of records stored in the {@linkcode IDBObjectStore} on which the query will be executed, with
+ *           all pre-processors applied.
+ * @template R The type of records stored in the {@linkcode IDBObjectStore} on which the query will be executed, with
+ *           all pre-processors and post-processors applied.
  */
 export default interface AnalyzedQuery<S, I = S, R = I> {
   /**

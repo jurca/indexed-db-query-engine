@@ -4,6 +4,10 @@ import PreProcessorDependantQueryRecordPropertyFilter from './PreProcessorDepend
 /**
  * A record matching pattern that has been analyzed and had its property constraints split into two groups depending on
  * whether a given property is matched by for its stored value or a value returned by a record pre-processor.
+ *
+ * @template S The type of records stored in the {@linkcode IDBObjectStore} on which the query will be executed.
+ * @template I The type of records stored in the {@linkcode IDBObjectStore} on which the query will be executed, with
+ *           all pre-processors applied.
  */
 export default interface AnalyzedFilter<S, I> {
   /**

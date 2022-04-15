@@ -4,6 +4,10 @@ import PreProcessorDependantQueryUniqueValueConstraint from './PreProcessorDepen
 /**
  * Record filtering based on requiring unique values in specified properties that has been analyzed to identify the
  * constraints that can be applied using object store indexes (if such indexes exist as least partially).
+ *
+ * @template S The type of records stored in the {@linkcode IDBObjectStore} on which the query will be executed.
+ * @template I The type of records stored in the {@linkcode IDBObjectStore} on which the query will be executed, with
+ *           all pre-processors applied.
  */
 export default interface AnalyzedUniqueValueConstraint<S, I> {
   /**

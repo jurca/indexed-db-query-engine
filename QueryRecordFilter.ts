@@ -3,6 +3,8 @@ import QueryRecordPropertyFilter from './QueryRecordPropertyFilter.js'
 /**
  * Descriptor of a record matching pattern. All of the filtering {@linkcode properties} must match for the record at
  * hand to pass the filter.
+ *
+ * @template R The type of the record on which the filter is to be applied.
  */
 export default interface QueryRecordFilter<R> {
   /**

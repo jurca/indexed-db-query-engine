@@ -4,6 +4,10 @@ import PreProcessorDependantQueryOrderBy from './PreProcessorDependantQueryOrder
 /**
  * Record ordering specification that has been analyzed to identify sorting clauses that can be applied by utilizing
  * object store indexes (if such indexes exist at least partially).
+ *
+ * @template S The type of records stored in the {@linkcode IDBObjectStore} on which the query will be executed.
+ * @template I The type of records stored in the {@linkcode IDBObjectStore} on which the query will be executed, with
+ *           all pre-processors applied.
  */
 export default interface AnalyzedOrderBy<S, I> {
   /**

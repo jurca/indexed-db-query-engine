@@ -5,6 +5,9 @@ import ValueProcessor from './ValueProcessor.js'
  * Record modifier that is meant to add or replace a single property in a record (or the record itself if the output
  * property path is empty) based on the value of a single property in the given record (or the record itself it the
  * input property path is empty).
+ *
+ * @template I The type of the record on which the record processor is to be applied.
+ * @template O The type of the record after the record processor has been applied.
  */
 export default interface RecordPropertyProcessor<I, O> {
   /**
@@ -20,7 +23,7 @@ export default interface RecordPropertyProcessor<I, O> {
    * 
    * @see {@linkcode allowIntermediateValueOverWrite}
    */
-  readonly valueProcessor: ValueProcessor<unknown, unknown>
+  readonly valueProcessor: ValueProcessor<I[keyof I], O[keyof O]>
 
   /**
    * Property path denoting the record property where the result of {@linkcode valueProcessor} will be stored. Using an

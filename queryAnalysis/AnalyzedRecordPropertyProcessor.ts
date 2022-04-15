@@ -3,6 +3,9 @@ import RecordPropertyProcessor from '../RecordPropertyProcessor.js'
 /**
  * A wrapper of a record property processor providing additional metadata used by the query engine for scheduling the
  * processor's execution.
+ *
+ * @template I The type of the record on which the record processor is to be applied.
+ * @template O The type of the record after the record processor has been applied.
  */
 export default interface AnalyzedRecordPropertyProcessor<I, O> {
   /**

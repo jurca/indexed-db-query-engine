@@ -3,6 +3,8 @@ import PropertyPath from './PropertyPath.js'
 
 /**
  * Desired ordering of records by values of their property denoted by a property path.
+ *
+ * @template R The type of the records to sort.
  */
 export default interface QueryOrderBy<R> {
   /**

@@ -2,6 +2,8 @@ import PropertyPath from './PropertyPath.js'
 
 /**
  * Query constraint requiring unique values in records matched by the query at a single specific property path.
+ *
+ * @template R The type of the record to have the value of the denoted property tested for uniqueness.
  */
 export default interface QueryUniqueValueConstraint<R> {
   /**

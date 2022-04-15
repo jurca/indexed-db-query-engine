@@ -6,6 +6,8 @@ import QueryParameter from '../QueryParameter.js'
  * new context is created for every query executed by the query engine and the context is used while examining every
  * record inspected by the query engine during the execution of the query. The context is used to track data related to
  * the current query and its execution.
+ *
+ * @template R The type of the database record.
  */
 export default interface QueryExecutionContext<R> {
   /**

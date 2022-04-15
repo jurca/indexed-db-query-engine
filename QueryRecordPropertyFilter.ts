@@ -4,6 +4,8 @@ import QueryParameter from './QueryParameter.js'
 /**
  * Descriptor of records filter specifying filtering by a single specific record property and the desired property
  * values.
+ *
+ * @template R The type of the record on which the filter is to be applied.
  */
 export default interface QueryRecordPropertyFilter<R> {
   /**
