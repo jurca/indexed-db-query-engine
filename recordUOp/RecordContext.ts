@@ -2,8 +2,15 @@
  * Context available to a record processing micro-program during the processing of a single record. A new context is
  * created for every record examined by the query engine. The context is used to track data related to the current
  * record and the execution of the micro-program for the current record.
+ *
+ * @template R The type of the database record.
  */
-export default interface RecordContext {
+export default interface RecordContext<R> {
+  /**
+   * The database record currently being inspected and modified.
+   */
+  record: R
+
   /**
    * Whether or not the record processing micro-program is currently running. This flag is used by the micro-program to
    * terminate its execution prematurely if an outcome of the micro-program has already been determined. The
