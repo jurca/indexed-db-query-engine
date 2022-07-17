@@ -1,5 +1,5 @@
-import QueryExecutionContext from './QueryExecutionContext.js'
-import RecordContext from './RecordContext.js'
+import QueryExecutionContext from '../executor/QueryExecutionContext.js'
+import RecordContext from '../executor/RecordContext.js'
 
 /**
  * A record processing operation implementation that has been bound to its arguments, needing only a query execution

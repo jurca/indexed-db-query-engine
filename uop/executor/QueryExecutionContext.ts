@@ -1,5 +1,5 @@
-import PropertyPath from '../PropertyPath.js'
-import QueryParameter from '../QueryParameter.js'
+import PropertyPath from '../../PropertyPath.js'
+import QueryParameter from '../../QueryParameter.js'
 
 /**
  * Shared context available to all record processing micro-programs executed during the processing of a single query. A

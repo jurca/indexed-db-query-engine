@@ -1,11 +1,11 @@
-import RecordPropertyProcessor from '../RecordPropertyProcessor.js'
+import RecordPropertyProcessor from '../../RecordPropertyProcessor.js'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import ApplyRecordProcessorOp from './ApplyRecordProcessorOp.js'
+import ApplyRecordProcessorOp from '../ApplyRecordProcessorOp.js'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import OpCode from './OpCode.js' // eslint-disable-line @typescript-eslint/no-unused-vars
+import OpCode from '../OpCode.js' // eslint-disable-line @typescript-eslint/no-unused-vars
 import OpImplementation from './OpImplementation.js'
 
 /**

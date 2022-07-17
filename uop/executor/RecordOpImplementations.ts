@@ -1,12 +1,13 @@
-import ApplyRecordProcessorOpImplementation from './ApplyRecordProcessorOpImplementation.js'
-import ExcludeRecordFromQueryResultOpImplementation from './ExcludeRecordFromQueryResultOpImplementation.js'
-import ExitOpImplementation from './ExitOpImplementation.js'
-import FilterByPropertyOpImplementation from './FilterByPropertyOpImplementation.js'
-import FilterForUniquenessOpImplementation from './FilterForUniquenessOpImplementation.js'
-import JumpIfLastOpResultMatchOpImplementation from './JumpIfLastOpResultMatchOpImplementation.js'
-import JumpOpImplementation from './JumpOpImplementation.js'
-import OpCode from './OpCode.js'
-import OpImplementation from './OpImplementation.js'
+import ApplyRecordProcessorOpImplementation from '../implementation/ApplyRecordProcessorOpImplementation.js'
+import ExcludeRecordFromQueryResultOpImplementation
+  from '../implementation/ExcludeRecordFromQueryResultOpImplementation.js'
+import ExitOpImplementation from '../implementation/ExitOpImplementation.js'
+import FilterByPropertyOpImplementation from '../implementation/FilterByPropertyOpImplementation.js'
+import FilterForUniquenessOpImplementation from '../implementation/FilterForUniquenessOpImplementation.js'
+import JumpIfLastOpResultMatchOpImplementation from '../implementation/JumpIfLastOpResultMatchOpImplementation.js'
+import JumpOpImplementation from '../implementation/JumpOpImplementation.js'
+import OpCode from '../OpCode.js'
+import OpImplementation from '../implementation/OpImplementation.js'
 
 /**
  * Implementations of micro-operations for processing records during query execution. This interface is meant for

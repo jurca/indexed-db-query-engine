@@ -1,4 +1,4 @@
-import RecordOp from './RecordOp.js'
+import RecordOp from '../RecordOp.js'
 import RecordProgramExecutorFactory from './RecordProgramExecutorFactory.js'
 
 /**

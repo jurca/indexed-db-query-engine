@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unused-vars */
 // @ts-ignore
-import QueryExecutionContext from './QueryExecutionContext.js'
+import QueryExecutionContext from './executor/QueryExecutionContext.js'
 // @ts-ignore
 import QueryRecordPropertyFilter from '../QueryRecordPropertyFilter.js'
 // @ts-ignore
 import QueryUniqueValueConstraint from '../QueryUniqueValueConstraint.js'
 // @ts-ignore
-import RecordContext from './RecordContext.js'
+import RecordContext from './executor/RecordContext.js'
 // @ts-ignore
 import RecordPropertyProcessor from '../RecordPropertyProcessor.js'
 /* eslint-enable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unused-vars */

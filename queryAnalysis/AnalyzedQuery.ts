@@ -1,6 +1,6 @@
 import Query from '../Query.js'
 import RecordPropertyProcessor from '../RecordPropertyProcessor.js'
-import RecordOp from '../recordUOp/RecordOp.js'
+import RecordOp from '../uop/RecordOp.js'
 import AnalyzedFilter from './AnalyzedFilter.js'
 import AnalyzedOrderBy from './AnalyzedOrderBy.js'
 import AnalyzedRecordPropertyProcessor from './AnalyzedRecordPropertyProcessor.js'

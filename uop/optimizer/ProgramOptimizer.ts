@@ -1,4 +1,4 @@
-import RecordOp from './RecordOp.js'
+import RecordOp from '../RecordOp.js'
 
 /**
  * The program optimizer is used to examine and improve the runtime efficiency of a generated micro-operation program

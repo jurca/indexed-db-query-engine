@@ -1,10 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import ExcludeRecordFromQueryResultOp from './ExcludeRecordFromQueryResultOp.js'
+import ExcludeRecordFromQueryResultOp from '../ExcludeRecordFromQueryResultOp.js'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import OpCode from './OpCode.js' // eslint-disable-line @typescript-eslint/no-unused-vars
+import OpCode from '../OpCode.js' // eslint-disable-line @typescript-eslint/no-unused-vars
 import OpImplementation from './OpImplementation.js'
 
 /**
