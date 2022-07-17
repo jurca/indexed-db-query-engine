@@ -13,6 +13,6 @@ import OpImplementation from './OpImplementation.js'
  * @template R The type of the database record.
  * @see ExcludeRecordFromQueryResultOp
  */
-type ExcludeRecordFromQueryResultOpImplementation<R> = OpImplementation<R, []>;
+type ExcludeRecordFromQueryResultOpImplementation<R> = OpImplementation<R, readonly []>;
 
 export default ExcludeRecordFromQueryResultOpImplementation

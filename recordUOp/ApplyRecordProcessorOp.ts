@@ -8,6 +8,6 @@ import OpCode from './OpCode.js'
  *
  * @see OpCode.APPLY_RECORD_PROCESSOR
  */
-type ApplyRecordProcessorOp = Op<OpCode.APPLY_RECORD_PROCESSOR, [RecordPropertyProcessor<unknown, unknown>]>
+type ApplyRecordProcessorOp = Op<OpCode.APPLY_RECORD_PROCESSOR, readonly [RecordPropertyProcessor<unknown, unknown>]>
 
 export default ApplyRecordProcessorOp

@@ -11,6 +11,6 @@ import RecordContext from './RecordContext.js' // eslint-disable-line @typescrip
  *
  * @see OpCode.JUMP_IF_LAST_OP_RESULT_MATCH
  */
-type JumpIfLastOpResultMatchOp = Op<OpCode.JUMP_IF_LAST_OP_RESULT_MATCH, [boolean, number]>
+type JumpIfLastOpResultMatchOp = Op<OpCode.JUMP_IF_LAST_OP_RESULT_MATCH, readonly [boolean, number]>
 
 export default JumpIfLastOpResultMatchOp

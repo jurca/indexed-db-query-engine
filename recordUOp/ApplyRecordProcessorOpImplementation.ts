@@ -15,6 +15,6 @@ import OpImplementation from './OpImplementation.js'
  * @template I The type of the database record after the property processor has been applied.
  * @see ApplyRecordProcessorOp
  */
-type ApplyRecordProcessorOpImplementation<R, I> = OpImplementation<R, [RecordPropertyProcessor<R, I>]>
+type ApplyRecordProcessorOpImplementation<R, I> = OpImplementation<R, readonly [RecordPropertyProcessor<R, I>]>
 
 export default ApplyRecordProcessorOpImplementation

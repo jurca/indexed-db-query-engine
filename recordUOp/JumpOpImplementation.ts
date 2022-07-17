@@ -12,6 +12,6 @@ import OpImplementation from './OpImplementation.js'
  * @template R The type of the database record.
  * @see JumpOp
  */
-type JumpOpImplementation<R> = OpImplementation<R, [number]>
+type JumpOpImplementation<R> = OpImplementation<R, readonly [number]>
 
 export default JumpOpImplementation

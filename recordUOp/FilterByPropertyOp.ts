@@ -8,6 +8,6 @@ import OpCode from './OpCode.js'
  *
  * @see OpCode.FILTER_BY_PROPERTY
  */
-type FilterByPropertyOp = Op<OpCode.FILTER_BY_PROPERTY, [QueryRecordPropertyFilter<unknown>]>
+type FilterByPropertyOp = Op<OpCode.FILTER_BY_PROPERTY, readonly [QueryRecordPropertyFilter<unknown>]>
 
 export default FilterByPropertyOp

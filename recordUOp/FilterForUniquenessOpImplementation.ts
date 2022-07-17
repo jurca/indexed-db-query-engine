@@ -13,6 +13,6 @@ import OpImplementation from './OpImplementation.js'
  * @template R The type of the database record.
  * @see FilterForUniquenessOp
  */
-type FilterForUniquenessOpImplementation<R> = OpImplementation<R, [QueryUniqueValueConstraint<R>]>
+type FilterForUniquenessOpImplementation<R> = OpImplementation<R, readonly [QueryUniqueValueConstraint<R>]>
 
 export default FilterForUniquenessOpImplementation

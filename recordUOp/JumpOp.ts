@@ -10,6 +10,6 @@ import RecordContext from './RecordContext.js' // eslint-disable-line @typescrip
  *
  * @see OpCode.JUMP
  */
-type JumpOp = Op<OpCode.JUMP, [number]>
+type JumpOp = Op<OpCode.JUMP, readonly [number]>
 
 export default JumpOp

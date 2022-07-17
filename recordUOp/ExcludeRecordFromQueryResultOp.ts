@@ -6,6 +6,6 @@ import OpCode from './OpCode.js'
  *
  * @see OpCode.EXCLUDE_RECORD_FROM_QUERY_RESULT
  */
-type ExcludeRecordFromQueryResultOp = Op<OpCode.EXCLUDE_RECORD_FROM_QUERY_RESULT, []>
+type ExcludeRecordFromQueryResultOp = Op<OpCode.EXCLUDE_RECORD_FROM_QUERY_RESULT, readonly []>
 
 export default ExcludeRecordFromQueryResultOp

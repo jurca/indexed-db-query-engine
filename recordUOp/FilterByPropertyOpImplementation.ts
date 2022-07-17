@@ -13,6 +13,6 @@ import OpImplementation from './OpImplementation.js'
  * @template R The type of the database record.
  * @see FilterByPropertyOp
  */
-type FilterByPropertyOpImplementation<R> = OpImplementation<R, [QueryRecordPropertyFilter<R>]>
+type FilterByPropertyOpImplementation<R> = OpImplementation<R, readonly [QueryRecordPropertyFilter<R>]>
 
 export default FilterByPropertyOpImplementation

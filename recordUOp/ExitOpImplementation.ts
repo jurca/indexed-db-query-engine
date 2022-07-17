@@ -12,6 +12,6 @@ import OpImplementation from './OpImplementation.js'
  * @template R The type of the database record.
  * @see ExitOp
  */
-type ExitOpImplementation<R> = OpImplementation<R, []>
+type ExitOpImplementation<R> = OpImplementation<R, readonly []>
 
 export default ExitOpImplementation

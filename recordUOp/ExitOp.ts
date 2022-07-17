@@ -6,6 +6,6 @@ import OpCode from './OpCode.js'
  *
  * @see OpCode.EXIT
  */
-type ExitOp = Op<OpCode.EXIT, []>
+type ExitOp = Op<OpCode.EXIT, readonly []>
 
 export default ExitOp

@@ -8,6 +8,6 @@ import OpCode from './OpCode.js'
  *
  * @see OpCode.FILTER_FOR_UNIQUENESS
  */
-type FilterForUniquenessOp = Op<OpCode.FILTER_FOR_UNIQUENESS, [QueryUniqueValueConstraint<unknown>]>
+type FilterForUniquenessOp = Op<OpCode.FILTER_FOR_UNIQUENESS, readonly [QueryUniqueValueConstraint<unknown>]>
 
 export default FilterForUniquenessOp

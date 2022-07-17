@@ -13,6 +13,6 @@ import OpImplementation from './OpImplementation.js'
  * @template R The type of the database record.
  * @see JumpIfLastOpResultMatchOp
  */
-type JumpIfLastOpResultMatchOpImplementation<R> = OpImplementation<R, [boolean, number]>
+type JumpIfLastOpResultMatchOpImplementation<R> = OpImplementation<R, readonly [boolean, number]>
 
 export default JumpIfLastOpResultMatchOpImplementation
