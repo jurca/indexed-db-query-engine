@@ -59,7 +59,9 @@ enum OpCode {
    * argument to the {@linkcode RecordContext.opIndex} program counter. Note that the micro-program executor will still
    * increment the {@linkcode RecordContext.opIndex} program counter even when this operation is executed, therefore
    * this operation's argument should specify a jump to the operation just before the operation that should be executed
-   * next. The operation always ends with success (the {@linkcode RecordContext.lastOpSuccess} flag will be `true`).
+   * next. This enables the program executor to treat all operations in the same way, simplifying its design and
+   * extensibility, and makes it easier to extend the instruction set with new jump operations. The operation always
+   * ends with success (the {@linkcode RecordContext.lastOpSuccess} flag will be `true`).
    */
   JUMP = 'OpCode.JUMP',
 
@@ -69,8 +71,10 @@ enum OpCode {
    * program counter offset specified in operation's arguments to the {@linkcode RecordContext.opIndex} program
    * counter. Note that the micro-program executor will still increment the {@linkcode RecordContext.opIndex} program
    * counter even when this operation is executed, therefore this operation's argument should specify a jump to the
-   * operation just before the operation that should be executed next. The operation will be successful (reflected in
-   * the {@linkcode RecordContext.lastOpSuccess} flag) iff the operation performs the jump.
+   * operation just before the operation that should be executed next. This enables the program executor to treat all
+   * operations in the same way, simplifying its design and extensibility, and makes it easier to extend the
+   * instruction set with new jump operations. The operation will be successful (reflected in the
+   * {@linkcode RecordContext.lastOpSuccess} flag) iff the operation performs the jump.
    */
   JUMP_IF_LAST_OP_RESULT_MATCH = 'OpCode.JUMP_IF_LAST_OP_RESULT_MATCH',
 
