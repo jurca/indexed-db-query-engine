@@ -4,7 +4,7 @@ import RecordOp from '../uop/RecordOp.js'
 import AnalyzedFilter from './AnalyzedFilter.js'
 import AnalyzedOrderBy from './AnalyzedOrderBy.js'
 import AnalyzedRecordPropertyProcessor from './AnalyzedRecordPropertyProcessor.js'
-import AnalyzedUniqueValueConstraint from './AnalyzedUniqueValueConstraint.js'
+import AnalyzedUniqueValueConstraints from './AnalyzedUniqueValueConstraints.js'
 
 /**
  * Result of a basic analysis and optimization of a query. This is analysis is not bound to any object store, enabling
@@ -42,7 +42,7 @@ export default interface AnalyzedQuery<S, I = S, R = I> {
    * Treatment of values that cannot be used as valid IndexedDB keys when determining uniqueness is undefined and is up
    * to the query engine.
    */
-  readonly onlyUnique: AnalyzedUniqueValueConstraint<S, I>
+  readonly onlyUnique: AnalyzedUniqueValueConstraints<S, I>
 
   /**
    * Desired ordering of the records in query results. The record ordering requirements are applied lexicographically,

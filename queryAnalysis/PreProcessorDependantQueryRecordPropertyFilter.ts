@@ -1,4 +1,4 @@
-import QueryRecordPropertyFilter from '../QueryRecordPropertyFilter.js'
+import AnalyzedQueryRecordPropertyFilter from './AnalyzedQueryRecordPropertyFilter.js'
 import AnalyzedRecordPropertyProcessor from './AnalyzedRecordPropertyProcessor.js'
 
 /**
@@ -15,7 +15,7 @@ export default interface PreProcessorDependantQueryRecordPropertyFilter<S, I> {
    * The record property filter that depends on the outcome of the record property pre-processor referenced by
    * {@linkcode preProcessor}.
    */
-  readonly propertyFilter: QueryRecordPropertyFilter<I>
+  readonly propertyFilter: AnalyzedQueryRecordPropertyFilter<I>
 
   /**
    * The property pre-processor of which's outcome the {@linkcode propertyFilter} depends on.

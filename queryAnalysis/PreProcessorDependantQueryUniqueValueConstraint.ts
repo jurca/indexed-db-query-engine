@@ -1,4 +1,4 @@
-import QueryUniqueValueConstraint from '../QueryUniqueValueConstraint.js'
+import AnalyzedQueryUniqueValueConstraint from './AnalyzedQueryUniqueValueConstraint.js'
 import AnalyzedRecordPropertyProcessor from './AnalyzedRecordPropertyProcessor.js'
 
 /**
@@ -15,7 +15,7 @@ export default interface PreProcessorDependantQueryUniqueValueConstraint<S, I> {
    * The record property value uniqueness requirement that is dependant on the outcome of the associated record
    * property pre-processor referenced by {@linkcode preProcessor}.
    */
-  readonly valueConstraint: QueryUniqueValueConstraint<I>
+  readonly valueConstraint: AnalyzedQueryUniqueValueConstraint<I>
 
   /**
    * The property pre-processor of which's outcome the {@linkcode valueConstraint} depends on.

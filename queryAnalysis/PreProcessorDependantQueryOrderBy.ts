@@ -1,4 +1,4 @@
-import QueryOrderBy from '../QueryOrderBy.js'
+import AnalyzedQueryOrderByProperty from './AnalyzedQueryOrderByProperty.js'
 import AnalyzedRecordPropertyProcessor from './AnalyzedRecordPropertyProcessor.js'
 
 /**
@@ -17,7 +17,7 @@ export default interface PreProcessorDependantQueryOrderBy<S, I> {
    * a different pre-processor-affected property that is used to sort record before sorting by this property is
    * applied.
    */
-  readonly orderBy: QueryOrderBy<I>[]
+  readonly orderBy: AnalyzedQueryOrderByProperty<I>
 
   /**
    * The property pre-processor of which's outcome the {@linkcode orderBy} depends on. This property is {@code null}
