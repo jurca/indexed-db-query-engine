@@ -28,4 +28,16 @@ export default interface AnalyzedRecordPropertyProcessor<I, O> {
    * a record on first unmatched filter without having to test the rest of filtering constraints).
    */
   readonly cost: number
+
+  /**
+   * A rough estimate of how much computation executing the {@linkcode RecordPropertyProcessor.valueProcessor} would
+   * require. This may be used by the query engine to reorder the execution of multiple record pre-processors affecting
+   * query execution to execute the cheapest pre-processors first (while observing and respecting their dependencies).
+   *
+   * This estimate may be derived by keeping statistics on previous uses of the processor, analyzing its code or other
+   * means. The value range of this property is up to the query engine's implementation.
+   *
+   * This value is `null` if the query engine has no reliable enough estimate available.
+   */
+  readonly runtimeCostEstimate: number | null
 }
