@@ -29,7 +29,7 @@ export default interface AnalyzedPreProcessorDependantQueryRecordFilter<S, I> {
   readonly properties: readonly PreProcessorDependantQueryRecordPropertyFilter<S, I>[]
 
   /**
-   * The estimated minimal execution cost of deduplicated pre-processors referenced by
+   * The estimated minimum execution cost of deduplicated pre-processors referenced by
    * {@linkcode PreProcessorDependantQueryRecordPropertyFilter.preProcessor}s and (transitively) their dependencies
    * referenced by {@linkcode AnalyzedRecordPropertyProcessor.dependsOn} in the {@linkcode properties} filter.
    *

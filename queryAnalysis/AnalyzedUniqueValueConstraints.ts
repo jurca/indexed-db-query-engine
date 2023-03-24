@@ -31,13 +31,16 @@ export default interface AnalyzedUniqueValueConstraints<S, I> {
   readonly preProcessorDependant: readonly PreProcessorDependantQueryUniqueValueConstraint<S, I>[]
 
   /**
-   * The sum of the {@linkcode preProcessingCost} and {@linkcode propertyAccessCost} properties. The actual execution
-   * cost may be higher depending on the pre-processors used.
+   * The sum of the {@linkcode preProcessingCost} and {@linkcode minimumPropertyAccessCost} properties. The actual
+   * execution cost may be higher depending on the pre-processors used.
+   *
+   * This cost estimate does not include the indexable part of these constraints because their cost will depend on the
+   * indexes that will be utilized during query execution.
    */
-  readonly minimalEstimatedCost: number
+  readonly minimumEstimatedCost: number
 
   /**
-   * The estimated minimal execution cost of deduplicated pre-processors referenced by
+   * The estimated minimum execution cost of deduplicated pre-processors referenced by
    * {@linkcode PreProcessorDependantQueryUniqueValueConstraint.preProcessor}s and (transitively) their dependencies
    * referenced by {@linkcode AnalyzedRecordPropertyProcessor.dependsOn} in the {@linkcode preProcessorDependant}
    * constraints.
@@ -54,11 +57,15 @@ export default interface AnalyzedUniqueValueConstraints<S, I> {
   readonly preProcessingCost: number
 
   /**
-   * The sum of {@linkcode AnalyzedQueryUniqueValueConstraint.propertyAccessCost} of all constraints in
-   * {@linkcode indexable} and {@linkcode preProcessorDependant} constraints.
+   * The sum of {@linkcode AnalyzedQueryUniqueValueConstraint.propertyAccessCost} of all constraints referenced by
+   * {@linkcode PreProcessorDependantQueryUniqueValueConstraint.valueConstraint} properties of all
+   * {@linkcode preProcessorDependant} constraints.
    *
    * Note that no deduplication is necessary since required-to-be-unique properties are already deduplicated by the
    * query analyzer.
+   *
+   * This cost estimate does not include the indexable part of these constraints because their cost will depend on the
+   * indexes that will be utilized during query execution.
    */
-  readonly propertyAccessCost: number
+  readonly minimumPropertyAccessCost: number
 }

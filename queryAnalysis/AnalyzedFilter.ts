@@ -24,33 +24,41 @@ export default interface AnalyzedFilter<S, I> {
 
   /**
    * The sum of the {@linkcode AnalyzedPreProcessorDependantQueryRecordFilter.preProcessingCost} of
-   * {@linkcode preProcessorDependant} part of this filter, {@linkcode propertyAccessCost},
+   * {@linkcode preProcessorDependant} part of this filter, {@linkcode minimumPropertyAccessCost},
    * {@linkcode minimumValueMatchCost} and {@linkcode valueMatchParameters.length} properties. The actual execution
    * cost may be higher depending on the pre-processors and query parameters used.
+   *
+   * This cost estimate does not include the indexable part of this filter because its cost will depend on the indexes
+   * that will be utilized during query execution.
    */
-  readonly minimalEstimatedCost: number
+  readonly minimumEstimatedCost: number
 
   /**
-   * The total expected execution cost of accessing all properties in the {@linkcode indexable} and
-   * {@linkcode preProcessorDependant} filters. This is computed by summing up the
-   * {@linkcode AnalyzedQueryRecordFilter.propertyAccessCost} and
-   * {@linkcode AnalyzedPreProcessorDependantQueryRecordFilter.propertyAccessCost} properties (since a property path
-   * cannot both depend and not depend on a pre-processor, no property path deduplication is necessary).
+   * The total expected execution cost of accessing all properties in the {@linkcode preProcessorDependant} part of
+   * this filter. This property mirrors {@linkcode AnalyzedPreProcessorDependantQueryRecordFilter.propertyAccessCost}
+   * property of {@linkcode preProcessorDependant} filter.
+   *
+   * This cost estimate does not include the indexable part of this filter because its cost will depend on the indexes
+   * that will be utilized during query execution.
    */
-  readonly propertyAccessCost: number
+  readonly minimumPropertyAccessCost: number
 
   /**
-   * The sum of {@linkcode AnalyzedQueryRecordFilter.minimumValueMatchCost} and
-   * {@linkcode AnalyzedPreProcessorDependantQueryRecordFilter.minimumValueMatchCost}. The matched properties included
-   * in the sum are not deduplicated, as every property match needs to be applied individually.
+   * This property mirrors the {@linkcode AnalyzedPreProcessorDependantQueryRecordFilter.minimumValueMatchCost} of the
+   * {@linkcode preProcessorDependant} part of this filter.
+   *
+   * This cost estimate does not include the indexable part of this filter because its cost will depend on the indexes
+   * that will be utilized during query execution.
    */
   readonly minimumValueMatchCost: number
 
   /**
-   * The list of all query parameters used in {@linkcode AnalyzedQueryRecordFilter.valueMatchParameters} and
-   * {@linkcode AnalyzedPreProcessorDependantQueryRecordFilter.valueMatchParameters}, in the matching order. The query
-   * parameters are not deduplicated, so that their value matching costs are accounted for every value matching they
-   * are used for.
+   * This property mirrors the {@linkcode AnalyzedPreProcessorDependantQueryRecordFilter.valueMatchParameters} property
+   * of the the {@linkcode preProcessorDependant} part of this filter. The query parameters are not deduplicated, so
+   * that their value matching costs are accounted for every value matching they are used for.
+   *
+   * This cost estimate does not include the indexable part of this filter because its cost will depend on the indexes
+   * that will be utilized during query execution.
    */
   readonly valueMatchParameters: readonly QueryParameter[]
 }

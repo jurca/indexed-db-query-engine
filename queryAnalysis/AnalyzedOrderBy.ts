@@ -33,13 +33,16 @@ export default interface AnalyzedOrderBy<S, I> {
   readonly preProcessorDependant: readonly PreProcessorDependantQueryOrderBy<S, I>[]
 
   /**
-   * The sum of the {@linkcode preProcessingCost} and {@linkcode propertyAccessCost} properties. The actual execution
-   * cost may be higher depending on the pre-processors used.
+   * The sum of the {@linkcode preProcessingCost} and {@linkcode minimumPropertyAccessCost} properties. The actual
+   * execution cost may be higher depending on the pre-processors used.
+   *
+   * This cost estimate does not include the indexable part of this record ordering specification because its cost will
+   * depend on the indexes that will be utilized during query execution.
    */
-  readonly minimalEstimatedCost: number
+  readonly minimumEstimatedCost: number
 
   /**
-   * The estimated minimal execution cost of deduplicated pre-processors referenced by
+   * The estimated minimum execution cost of deduplicated pre-processors referenced by
    * {@linkcode PreProcessorDependantQueryOrderBy.preProcessor}s and (transitively) their dependencies referenced by
    * {@linkcode AnalyzedRecordPropertyProcessor.dependsOn} in the {@linkcode preProcessorDependant} record ordering.
    *
@@ -56,9 +59,13 @@ export default interface AnalyzedOrderBy<S, I> {
 
   /**
    * The sum of {@linkcode AnalyzedQueryOrderByProperty.propertyAccessCost} of all record ordering properties listed in
-   * {@linkcode indexable} and {@linkcode preProcessorDependant} properties.
+   * {@linkcode PreProcessorDependantQueryOrderBy.orderBy} properties in the {@linkcode preProcessorDependant}
+   * property.
    *
    * Note that no deduplication is necessary since ordering properties are already deduplicated by the query analyzer.
+   *
+   * This cost estimate does not include the indexable part of this record ordering specification because its cost will
+   * depend on the indexes that will be utilized during query execution.
    */
-  readonly propertyAccessCost: number
+  readonly minimumPropertyAccessCost: number
 }
