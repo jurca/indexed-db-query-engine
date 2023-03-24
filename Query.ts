@@ -35,9 +35,9 @@ export default interface Query<S, I = S, R = I> {
   readonly onlyUnique: readonly QueryUniqueValueConstraint<I>[]
 
   /**
-   * Desired ordering of the records in query results. The records are sorted by the order specified by the first item
-   * in the array, matching records are sorted by the order specified by the second item, etc. The query engine may
-   * return the matched records in any order if the array is empty.
+   * Desired ordering of the records in query results. The records are sorted lexicographically, that is by the order
+   * specified by the first item in the array, matching records are sorted by the order specified by the second item,
+   * etc. The query engine may return the matched records in any order if the array is empty.
    */
   readonly orderBy: readonly QueryOrderBy<I>[]
 
