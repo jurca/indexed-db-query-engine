@@ -23,8 +23,7 @@ export default interface AnalyzedFilter<S, I> {
   readonly preProcessorDependant: AnalyzedPreProcessorDependantQueryRecordFilter<S, I>
 
   /**
-   * The sum of the {@linkcode AnalyzedPreProcessorDependantQueryRecordFilter.preProcessingCost} of
-   * {@linkcode preProcessorDependant} part of this filter, {@linkcode minimumPropertyAccessCost},
+   * The sum of the {@linkcode preProcessingCost}, {@linkcode minimumPropertyAccessCost},
    * {@linkcode minimumValueMatchCost} and {@linkcode valueMatchParameters.length} properties. The actual execution
    * cost may be higher depending on the pre-processors and query parameters used.
    *
@@ -32,6 +31,12 @@ export default interface AnalyzedFilter<S, I> {
    * that will be utilized during query execution.
    */
   readonly minimumEstimatedCost: number
+
+  /**
+   * This property mirrors the {@linkcode AnalyzedPreProcessorDependantQueryRecordFilter.preProcessingCost} property of
+   * the {@linkcode preProcessorDependant} part of this filter. Please refer to it for further details.
+   */
+  readonly preProcessingCost: number
 
   /**
    * The total expected execution cost of accessing all properties in the {@linkcode preProcessorDependant} part of
