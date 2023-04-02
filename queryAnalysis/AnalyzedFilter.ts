@@ -54,8 +54,8 @@ export default interface AnalyzedFilter<S, I> {
 
   /**
    * This property mirrors the {@linkcode AnalyzedPreProcessorDependantQueryRecordFilter.valueMatchParameters} property
-   * of the the {@linkcode preProcessorDependant} part of this filter. The query parameters are not deduplicated, so
-   * that their value matching costs are accounted for every value matching they are used for.
+   * of the {@linkcode preProcessorDependant} part of this filter. The query parameters are not deduplicated, so that
+   * their value matching costs are accounted for every value matching they are used for.
    *
    * This cost estimate does not include the indexable part of this filter because its cost will depend on the indexes
    * that will be utilized during query execution.
