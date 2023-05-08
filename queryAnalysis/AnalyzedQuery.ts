@@ -136,4 +136,31 @@ export default interface AnalyzedQuery<S, I = S, R = I> {
    * The query engine may chain this program with other programs together before executing it.
    */
   readonly postProcessingOps: readonly RecordOp[]
+
+  /**
+   * Estimated minimal cost of executing filters in this query. This is calculated by summing up the properties
+   * {@linkcode AnalyzedFilter.minimumEstimatedCost} of the {@linkcode mainFilter} and
+   * {@linkcode additionalFilterAlternatives} properties, and
+   * {@linkcode AnalyzedUniqueValueConstraints.minimumEstimatedCost} of the {@linkcode onlyUnique} property.
+   *
+   * Note that this cost estimate is a scalar value comparable with other filtering cost estimates, but not with
+   * non-filtering cost estimates (e.g. sorting cost estimates).
+   */
+  readonly minimumEstimatedFilteringCost: number
+
+  /**
+   * Estimated minimal cost of sorting the records matched by the query. This property mirrors the
+   * {@linkcode AnalyzedOrderBy.minimumEstimatedCost} property of the {@linkcode orderBy} property.
+   *
+   * Note that this cost estimate is a scalar value comparable with other sorting cost estimates, but not with
+   * non-sorting cost estimates (e.g. filtering cost estimates).
+   */
+  readonly minimumEstimatedSortingCost: number
+
+  /**
+   * Estimated minimal cost of applying postponed record pre-processors and post-processors. This is calculated by
+   * summing up the lengths of deduplicated input property paths, lengths deduplicated output property paths and the
+   * total number od record processors to apply.
+   */
+  readonly minimumEstimatedPostProcessingCost: number
 }
