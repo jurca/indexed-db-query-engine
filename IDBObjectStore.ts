@@ -24,11 +24,18 @@ declare global {
      * may choose to cache the prepared query until the object store's properties or indexes change.
      *
      * @param query The query to execute on this object store.
+     * @param parameters Values for the query parameters used in the query. This can be omitted if the query does not
+     *        use any query parameters.
      * @see prepareQuery
      * @returns Request that resolves to a cursor for traversing the query's results, with the result records provided
      *          in cursor's {@linkcode IDBCursorWithValue.value} one at a time.
+     * @throws {DOMException} Thrown if the query is invalid or contains a parameter for which there is no provided
+     *         value.
      */
-    query<S, I, R>(query: Partial<Query<S, I, R>> | PreparedQuery<S, I, R>): IDBRequest<IDBCursorWithValue | null>
+    query<S, I, R>(
+      query: Partial<Query<S, I, R>> | PreparedQuery<S, I, R>,
+      parameters?: Record<string, unknown>,
+    ): IDBRequest<IDBCursorWithValue | null>
 
     /**
      * Retrieves the values of the records matching the given key or key range in query, or the provided
@@ -39,11 +46,16 @@ declare global {
      * @param query The query to use to match records.
      * @param count The maximum number of records to retrieve. This overrides the {@linkcode Query.recordLimit}
      *        property if provided.
+     * @param parameters Values for the query parameters used in the query. This can be omitted if the query does not
+     *        use any query parameters.
      * @returns Request that resolves to the matched records.
+     * @throws {DOMException} Thrown if the query is invalid or contains a parameter for which there is no provided
+     *         value.
      */
     getAll<S, I, R>(
       query?: Partial<Query<S, I, R>> | PreparedQuery<S, I, R> | IDBValidKey | IDBKeyRange | null,
       count?: number,
+      parameters?: Record<string, unknown>,
     ): IDBRequest<R[]>
 
     /**
@@ -55,11 +67,16 @@ declare global {
      * @param query The query to use to match records.
      * @param count The maximum number of records to retrieve. This overrides the {@linkcode Query.recordLimit}
      *        property if provided.
+     * @param parameters Values for the query parameters used in the query. This can be omitted if the query does not
+     *        use any query parameters.
      * @returns Request that resolves to the keys of the matched records.
+     * @throws {DOMException} Thrown if the query is invalid or contains a parameter for which there is no provided
+     *         value.
      */
     getAllKeys<S, I, R>(
       query?: Partial<Query<S, I, R>> | PreparedQuery<S, I, R> | IDBValidKey | IDBKeyRange | null,
       count?: number,
+      parameters?: Record<string, unknown>,
     ): IDBRequest<IDBValidKey[]>
   }
 }
